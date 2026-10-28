@@ -1,0 +1,559 @@
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0a0a2a 0%, #1a1a4a 40%, #2d1f3d 70%, #1a0a1a 100%);
+}
+
+/* ===== Night Sky ===== */
+.night {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(10px);
+  background:
+    radial-gradient(ellipse at 10% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 25%, rgba(100, 100, 255, 0.05) 0%, transparent 50%);
+}
+
+/* ===== Flowers Container ===== */
+.flowers {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450px;
+  height: 450px;
+}
+
+/* ===== Not-loaded: hide everything ===== */
+.not-loaded * {
+  animation-play-state: paused !important;
+}
+.not-loaded .flowers {
+  opacity: 0;
+}
+body:not(.not-loaded) .flowers {
+  opacity: 1;
+  transition: opacity 0.6s ease-in;
+}
+
+/* ===== Grow Animation (used by multiple elements) ===== */
+.grow-ans {
+  animation: grow-ans 2s var(--d) backwards;
+}
+
+@keyframes grow-ans {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =============================
+   FLOWERS
+   ============================= */
+.flower {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+.flower--1 {
+  left: 70px;
+  animation: flower-appear 2s 0.3s backwards;
+}
+.flower--2 {
+  left: 195px;
+  animation: flower-appear 2s 0.6s backwards;
+}
+.flower--3 {
+  left: 320px;
+  animation: flower-appear 2s 0.9s backwards;
+}
+
+@keyframes flower-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Flower Stem ===== */
+.flower__line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 160px;
+  background: linear-gradient(to top, #2E7D32 0%, #388E3C 50%, #43A047 100%);
+  border-radius: 3px;
+  animation: stem-grow 2s 0.4s backwards;
+  transform-origin: bottom center;
+}
+
+@keyframes stem-grow {
+  0% {
+    transform: translateX(-50%) scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-50%) scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* ===== Stem Leaves ===== */
+.flower__line__leaf {
+  position: absolute;
+  width: 22px;
+  height: 10px;
+  background: linear-gradient(135deg, #43A047 0%, #2E7D32 100%);
+  animation: stem-leaf-pop 0.8s backwards;
+}
+
+.flower__line__leaf--1 {
+  top: 20px;
+  left: 4px;
+  border-radius: 0 100% 0 100%;
+  transform: rotate(-15deg);
+  animation-delay: 1.4s;
+}
+.flower__line__leaf--2 {
+  top: 42px;
+  left: -18px;
+  border-radius: 100% 0 100% 0;
+  transform: rotate(15deg);
+  animation-delay: 1.6s;
+}
+.flower__line__leaf--3 {
+  top: 64px;
+  left: 4px;
+  border-radius: 0 100% 0 100%;
+  transform: rotate(-15deg);
+  animation-delay: 1.8s;
+}
+.flower__line__leaf--4 {
+  top: 86px;
+  left: -18px;
+  border-radius: 100% 0 100% 0;
+  transform: rotate(15deg);
+  animation-delay: 2.0s;
+}
+.flower__line__leaf--5 {
+  top: 108px;
+  left: 4px;
+  border-radius: 0 100% 0 100%;
+  transform: rotate(-15deg);
+  animation-delay: 2.2s;
+}
+.flower__line__leaf--6 {
+  top: 130px;
+  left: -18px;
+  border-radius: 100% 0 100% 0;
+  transform: rotate(15deg);
+  animation-delay: 2.4s;
+}
+
+@keyframes stem-leaf-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ===== Petal Container ===== */
+.flower__leafs {
+  position: absolute;
+  bottom: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  animation: bloom 1.5s backwards;
+}
+
+.flower__leafs--1 {
+  animation-delay: 1.0s;
+}
+.flower__leafs--2 {
+  animation-delay: 1.3s;
+}
+.flower__leafs--3 {
+  animation-delay: 1.6s;
+}
+
+@keyframes bloom {
+  0% {
+    transform: translateX(-50%) scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-50%) scale(1.15) rotate(8deg);
+  }
+  100% {
+    transform: translateX(-50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* ===== Petals ===== */
+.flower__leaf {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50% 0 50% 0;
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+/* -- Flower 1: Pink -- */
+.flower__leafs--1 .flower__leaf {
+  background: linear-gradient(135deg, #ff6b9d 0%, #c94080 50%, #ff87b2 100%);
+}
+
+/* -- Flower 2: Orange -- */
+.flower__leafs--2 .flower__leaf {
+  background: linear-gradient(135deg, #ffb347 0%, #e08830 50%, #ffc875 100%);
+}
+
+/* -- Flower 3: Purple -- */
+.flower__leafs--3 .flower__leaf {
+  background: linear-gradient(135deg, #c578e8 0%, #8b3fbf 50%, #d49ef0 100%);
+}
+
+/* Petal positions — 4 petals forming a cross */
+.flower__leaf--1 {
+  top: 0;
+  left: 18px;
+  transform: rotate(45deg);
+}
+.flower__leaf--2 {
+  top: 18px;
+  left: 36px;
+  transform: rotate(135deg);
+}
+.flower__leaf--3 {
+  top: 36px;
+  left: 18px;
+  transform: rotate(225deg);
+}
+.flower__leaf--4 {
+  top: 18px;
+  left: 0;
+  transform: rotate(315deg);
+}
+
+/* ===== Flower Center (white circle) ===== */
+.flower__white-circle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 22px;
+  left: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff8e1 20%, #ffe082 70%, #ffd54f 100%);
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(255, 213, 79, 0.7), 0 0 20px rgba(255, 213, 79, 0.3);
+}
+
+/* ===== Glow Lights ===== */
+.flower__light {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 230, 160, 0.9);
+  animation: twinkle 2s infinite alternate ease-in-out;
+}
+
+.flower__light--1 { top: -8px;  left: 28px;  animation-delay: 0.0s; }
+.flower__light--2 { top: 4px;   left: 52px;  animation-delay: 0.3s; }
+.flower__light--3 { top: 28px;  left: 58px;  animation-delay: 0.6s; }
+.flower__light--4 { top: 50px;  left: 40px;  animation-delay: 0.9s; }
+.flower__light--5 { top: 54px;  left: 14px;  animation-delay: 1.2s; }
+.flower__light--6 { top: 38px;  left: -6px;  animation-delay: 0.2s; }
+.flower__light--7 { top: 14px;  left: -10px; animation-delay: 0.5s; }
+.flower__light--8 { top: -4px;  left: 8px;   animation-delay: 0.8s; }
+
+@keyframes twinkle {
+  0%   { opacity: 0.15; transform: scale(0.6); }
+  100% { opacity: 1;    transform: scale(1.5); }
+}
+
+/* =============================
+   LONG GREEN STALK
+   ============================= */
+.flower__g-long {
+  position: absolute;
+  bottom: 0;
+  left: 210px;
+  width: 5px;
+  height: 190px;
+  background: linear-gradient(to top, #1B5E20 0%, #388E3C 60%, #4CAF50 100%);
+  border-radius: 4px 4px 0 0;
+}
+
+.flower__g-long__top {
+  position: absolute;
+  top: -6px;
+  left: -5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #66BB6A 10%, #43A047 100%);
+}
+
+.flower__g-long__bottom {
+  position: absolute;
+  bottom: -4px;
+  left: -7px;
+  width: 20px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1B5E20;
+}
+
+/* =============================
+   GRASS
+   ============================= */
+.growing-grass {
+  animation: grow-ans 2s 1s backwards;
+}
+
+.flower__grass {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+}
+
+.flower__grass--1 {}
+.flower__grass--2 {}
+
+.flower__grass--top {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to top, #1B5E20 0%, transparent 100%);
+}
+
+.flower__grass--bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: #0d3b0d;
+}
+
+.flower__grass__leaf {
+  position: absolute;
+  bottom: 8px;
+  width: 12px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(to top, #1B5E20 0%, #43A047 100%);
+  transform-origin: bottom center;
+}
+
+.flower__grass__leaf--1 { left: 20px;  height: 55px; transform: rotate(-10deg); }
+.flower__grass__leaf--2 { left: 65px;  height: 68px; transform: rotate(6deg); }
+.flower__grass__leaf--3 { left: 100px; height: 48px; transform: rotate(-7deg); }
+.flower__grass__leaf--4 { left: 145px; height: 72px; transform: rotate(4deg); }
+.flower__grass__leaf--5 { left: 200px; height: 42px; transform: rotate(-13deg); }
+.flower__grass__leaf--6 { left: 270px; height: 62px; transform: rotate(8deg); }
+.flower__grass__leaf--7 { left: 330px; height: 50px; transform: rotate(-5deg); }
+.flower__grass__leaf--8 { left: 390px; height: 58px; transform: rotate(11deg); }
+
+.flower__grass__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  background: linear-gradient(to top, #0d2e0d 0%, transparent 100%);
+}
+
+/* =============================
+   RIGHT SIDE GREENERY
+   ============================= */
+.flower__g-right {
+  position: absolute;
+  bottom: 0;
+}
+
+.flower__g-right--1 {
+  right: 60px;
+  bottom: 8px;
+}
+.flower__g-right--2 {
+  right: 25px;
+  bottom: 8px;
+}
+
+.flower__g-right .leaf {
+  width: 28px;
+  height: 48px;
+  border-radius: 0 80% 0 80%;
+  background: linear-gradient(135deg, #43A047 0%, #1B5E20 100%);
+}
+
+/* =============================
+   FRONT GREENERY
+   ============================= */
+.flower__g-front {
+  position: absolute;
+  bottom: 0;
+  left: 80px;
+}
+
+.flower__g-front__leaf-wrapper {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+  animation: front-leaf 1.5s backwards;
+}
+
+.flower__g-front__leaf-wrapper--1 { left: 0;    animation-delay: 2.8s; }
+.flower__g-front__leaf-wrapper--2 { left: 28px;  animation-delay: 3.0s; }
+.flower__g-front__leaf-wrapper--3 { left: 56px;  animation-delay: 3.2s; }
+.flower__g-front__leaf-wrapper--4 { left: 84px;  animation-delay: 3.0s; }
+.flower__g-front__leaf-wrapper--5 { left: 112px; animation-delay: 3.4s; }
+.flower__g-front__leaf-wrapper--6 { left: 140px; animation-delay: 2.9s; }
+.flower__g-front__leaf-wrapper--7 { left: 168px; animation-delay: 3.1s; }
+.flower__g-front__leaf-wrapper--8 { left: 196px; animation-delay: 3.3s; }
+
+@keyframes front-leaf {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.flower__g-front__leaf {
+  width: 20px;
+  height: 38px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(to top, #1B5E20 0%, #66BB6A 100%);
+}
+
+.flower__g-front__line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 55px;
+  background: #2E7D32;
+  border-radius: 2px;
+}
+
+/* =============================
+   FRONT-RIGHT GREENERY
+   ============================= */
+.flower__g-fr {
+  position: absolute;
+  bottom: 0;
+  left: 290px;
+}
+
+.flower__g-fr .leaf {
+  width: 22px;
+  height: 38px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(to top, #1B5E20 0%, #4CAF50 100%);
+}
+
+.flower__g-fr__leaf {
+  position: absolute;
+  bottom: 0;
+  width: 14px;
+  height: 26px;
+  border-radius: 0 70% 0 70%;
+  background: linear-gradient(135deg, #388E3C 0%, #1B5E20 100%);
+}
+
+.flower__g-fr__leaf--1 { left: 6px;   bottom: 8px;  transform: rotate(-20deg); }
+.flower__g-fr__leaf--2 { left: -8px;  bottom: 18px; transform: rotate(15deg) scaleX(-1); }
+.flower__g-fr__leaf--3 { left: 10px;  bottom: 28px; transform: rotate(-25deg); }
+.flower__g-fr__leaf--4 { left: -5px;  bottom: 38px; transform: rotate(20deg) scaleX(-1); }
+.flower__g-fr__leaf--5 { left: 20px;  bottom: 10px; transform: rotate(-15deg); }
+.flower__g-fr__leaf--6 { left: 24px;  bottom: 24px; transform: rotate(10deg); }
+.flower__g-fr__leaf--7 { left: -10px; bottom: 32px; transform: rotate(-30deg) scaleX(-1); }
+.flower__g-fr__leaf--8 { left: 14px;  bottom: 42px; transform: rotate(20deg); }
+
+/* =============================
+   LONG GRASS GROUPS (0–7)
+   ============================= */
+.long-g {
+  position: absolute;
+  bottom: 0;
+}
+
+.long-g--0 { left: 10px; }
+.long-g--1 { left: 60px; }
+.long-g--2 { left: 120px; }
+.long-g--3 { left: 200px; }
+.long-g--4 { left: 270px; }
+.long-g--5 { left: 330px; }
+.long-g--6 { left: 390px; }
+.long-g--7 { left: 430px; }
+
+.long-g .leaf {
+  position: absolute;
+  bottom: 0;
+  width: 8px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(to top, #1B5E20 0%, #4CAF50 90%);
+  transform-origin: bottom center;
+}
+
+.long-g .leaf--0 {
+  left: 0;
+  height: 60px;
+  transform: rotate(-8deg);
+}
+.long-g .leaf--1 {
+  left: 10px;
+  height: 72px;
+  transform: rotate(5deg);
+  background: linear-gradient(to top, #2E7D32 0%, #66BB6A 90%);
+}
+.long-g .leaf--2 {
+  left: 20px;
+  height: 48px;
+  transform: rotate(-12deg);
+}
+.long-g .leaf--3 {
+  left: -5px;
+  height: 56px;
+  transform: rotate(10deg);
+  background: linear-gradient(to top, #1B5E20 0%, #43A047 90%);
+}

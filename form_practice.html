@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration Form</title>    
+</head>
+
+body style="background-color: MistyRose;">
+
+<form action="#" method="post">
+  <table style="margin:auto; width:700px; border-spacing:10px;">
+  
+  <tr>
+   <td colspan="2" align="center">
+     <h1>Student Registration Form</h1>
+   </td>
+  </tr>
+
+  <tr>
+    <td>Roll no. :</td>
+    <td><input type="text" size="50" name="roll_no" id="roll_no" required/></td>
+  </tr>
+
+  <tr>
+    <td>Student name :</td>
+    <td>
+      <input type="text" size="21" placeholder="First Name" name="first_name" id="first_name"/>
+      -
+      <input type="text" size="21" placeholder="Last Name" name="last_name" id="last_name"/>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>Father's name :</td>
+    <td><input type="text" size="50" name="father_name" id="father_name" required/></td>
+  </tr>
+  
+  <tr>
+    <td>Date of birth :</td>
+    <td>
+      <input type="date" name="dob" id="dob"/>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>Mobile no. :</td>
+    <td>
+      <input type="tel" name="mobile" id="mobile" placeholder="+91-XXXXXXXXXX" size="50"/>
+    </td>
+  </tr>
+  <tr>
+    <td>Email id :</td>
+    <td><input type="email" size="50" name="email" id="email"/></td>
+  </tr>
+  
+  <tr>
+    <td>Password :</td>
+    <td><input type="password" size="50" name="password" /></td>
+  </tr>
+  
+  <tr>
+    <td>Gender :</td>
+    <td>
+      <input type="radio" name="gender" value="Male" /> Male
+      <input type="radio" name="gender" value="Female" /> Female
+    </td>
+  </tr>
+  
+  <tr>
+    <td>Department :</td>
+    <td>
+      <input type="checkbox" name="department[]" value="CSE"/> CSE
+      <input type="checkbox" name="department[]" value="IT"/> IT
+      <input type="checkbox" name="department[]" value="ECE"/> ECE
+      <input type="checkbox" name="department[]" value="Civil"/> Civil
+      <input type="checkbox" name="department[]" value="Mech"/> Mech
+    </td>
+  </tr>
+  
+  <tr>
+    <td>Course :</td>
+    <td>
+      <select name="course" id="course">
+        <option disabled selected>-- Select Current Course --</option>
+        <option>Python</option>
+        <option>Node</option>
+        <option>Java</option>
+        <option>React</option>
+        <option>PHP</option>
+      </select>
+    </td>
+  </tr>
+  
+   <tr>
+    <td>Student photo :</td>
+    <td><input type="file" name="photo" accept="image/*" /></td>
+  </tr>
+  
+  <tr>
+    <td>City :</td>
+    <td><input type="text"  size="50" name="city" id="city" required/></td>
+  </tr>
+  
+  <tr>
+    <td>Address :</td>
+    <td><textarea cols="48" rows="5" name="address" id="address" required></textarea></td>
+  </tr>
+  
+  
+  <tr>
+    <td colspan="2" align="center">
+    	<input type="submit" value="Register" />
+     </td>
+  </tr>
+  
+  </table>
+ </form>
+ 
+</body>
+</html>

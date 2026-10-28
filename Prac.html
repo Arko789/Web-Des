@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Html_Form</title>
+        <style>
+            body {
+                margin: 50px;
+                background-color: rgba(226, 167, 78, 0.808);
+            }
+            .form-container {
+                background: #fff;
+                width: 450px; /* 50px is too narrow for a form, 350px is more practical */
+                margin: 50px auto;
+                padding: 20px;
+                border-radius: 8px;
+                
+                text-align: center;
+            }
+            .head {
+                text-align: center;
+                font-family: 'Arial', sans-serif;
+                background-color: #09788060;
+            }
+            .form {
+                font-size:larger
+
+            }
+            .tutorial{
+                text-align: center;
+                margin-top: 20px;
+                font-weight:900;
+            }
+        </style>
+    </head>
+    <body>
+        <audio controls autoplay>
+	        <source src="Inception.mp3" type="audio/mpeg">
+            Your browser does not support the audio element
+        </audio>
+        <div class="form-container">
+            <div class="head"> <h1>HTML FORMS</h1> </div>
+            <h3>Fill up your personal details for annual inspection</h3>
+            <div class="form"> 
+                <form action="/action_page.php"> </form>
+                    <label for="fname">Full Name:</label><br>
+                    <input type="text" id="fname" name="fname" placeholder="All in CAPS"><br>
+                    <label for="dob">DOB [dd/mm/yyyy]:</label><br>
+                    <input type="text" id="dob" name="dob"><br>
+                    <label for="gen">Gender:</label><br>
+                    <input type="text" id="gen" name="gen"><br>
+                    <label for="acc">Current academic status: </label><br>
+                    <input type="text" id="acc" name="acc"><br>
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+            
+            <p><h4><em>Thank you for your cooperation. Your details have been securely saved and will not be used without consent</em></h4></p>
+        </div>
+        <div class="tutorial">
+                <a href ="https://www.youtube.com/watch?v=Vf6N2J2nSQE">Having problem in fill the form ?<br>
+                    Click here for help video tutorial
+                </a>
+        </div>
+
+    </body>
+
+</html>
